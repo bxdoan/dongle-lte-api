@@ -20,9 +20,12 @@ class Session(object):
             "password": self.password,
             "sessionID": None,
         }
-        res = requests.post(self.url, data=json.dumps(login_params), headers=HEADERS)
-        if res.status_code == 200:
-            res_json = res.json()
-            return res_json['session']
-        else:
+        try:
+            res = requests.post(self.url, data=json.dumps(login_params), headers=HEADERS)
+            if res.status_code == 200:
+                res_json = res.json()
+                if res_json.get('session'):
+                    return res_json['session']
+            raise Exception("Login failed!!!")
+        except Exception as e:
             raise Exception("Login failed!!!")
