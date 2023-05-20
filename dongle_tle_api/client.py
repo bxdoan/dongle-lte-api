@@ -8,7 +8,7 @@ from dongle_tle_api.session import Session
 class Client(object):
     def __init__(self, url=None, username=None, password=None, **kwargs):
 
-        self.session = Session(**kwargs)
+        self.session = Session(url=url, username=username, password=password)
         self.headers = {
             "Content-Type": "application/json;charset=UTF-8",
             "Authorization": f"{self.session.sessionID}",
