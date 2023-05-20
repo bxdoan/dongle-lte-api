@@ -43,6 +43,7 @@ class FidType(BaseEnum):
     Query = 'queryFields'
     Reboot = 'rebootSystem'
     Login = 'login'
+    SetWifi = 'setWifi'
 
 
 FIELDS_QUERY = {
@@ -61,13 +62,22 @@ FIELDS_QUERY = {
        "wanIpAddress": "",
        "basebandVersion": ""
     },
-    "device_list": {"deviceList": []}
+    "device_list": {"deviceList": []},
+    "wifi_info": {
+        "ssidName": "",
+        "ssidMaxUserCount": 10,
+        "ssidSecureMode": "WPA2_PSK",
+        "ssidBroadcast": "",
+        "ssidPassword": "",
+        "wifiApSwitch": ""
+   },
 }
 
 
 class FieldsQuery(BaseEnum):
     Data = 'data'
     DeviceList = 'device_list'
+    WifiInfo = 'wifi_info'
 
 
 DEFAULT_URL = "http://192.168.100.1/api/json"
