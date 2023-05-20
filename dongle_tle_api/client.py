@@ -31,7 +31,7 @@ class Client(object):
             "sessionId": f"{self.session.sessionID}"
         }
         res = self._post_data(params)
-        return res['result']
+        return res
 
     def _post_data(self, params):
         try:
