@@ -25,8 +25,32 @@ print(device_list)
 ```
 Result dict
 ```python
-{'ssidName': 'DonHandsome', 'signalStrength': -74, 'sn': '1000000051E834', 'simCardState': 'valid', 'systemVersion': 'UFI103_V02_ZX_DD_230306', 'appVersion': 'WEB_V1.0.311#', 'imei': '861323063168235', 'basebandVersion': 'UFI103_CT 20220801', 'mac': '5c:a0:00:7b:05:3f', 'wanIpAddress': '10.188.47.213', 'imsi': '452021123670828', 'iccId': '89840200011236708283', 'hardwareVersion': 'HW1.3'}
-{'deviceList': [{'deviceIp': '192.168.100.248', 'deviceName': 'Buis-MBP', 'deviceType': 'WIFI', 'deviceAddress': 'f8:4d:89:98:07:76', 'deviceState': 1}]}
+{
+   "ssidName":"DonHandsome",
+   "signalStrength":-74,
+   "sn":"1000000051E834",
+   "simCardState":"valid",
+   "systemVersion":"UFI103_V02_ZX_DD_230306",
+   "appVersion":"WEB_V1.0.311#",
+   "imei":"861323063168235",
+   "basebandVersion":"UFI103_CT 20220801",
+   "mac":"5c:a0:00:7b:05:3f",
+   "wanIpAddress":"10.188.47.213",
+   "imsi":"452021123670828",
+   "iccId":"89840200011236708283",
+   "hardwareVersion":"HW1.3"
+}
+{
+   "deviceList":[
+      {
+         "deviceIp":"192.168.100.248",
+         "deviceName":"Buis-MBP",
+         "deviceType":"WIFI",
+         "deviceAddress":"f8:4d:89:98:07:76",
+         "deviceState":1
+      }
+   ]
+}
 ```
 
 Reboot network
@@ -37,6 +61,21 @@ client = Client()
 info = client.reboot()
 ```
 
+Change SSID
+```python3
+from dongle_tle_api.client import Client
+client = Client()
+client.change_ssid(ssid="Don123")
+```
+
+Change password
+```python3
+from dongle_tle_api.client import Client
+client = Client()
+client.change_password(password="12344321")
+```
+
+NOTE : change password/change ssid/reboot action will automate restart the modems
 ## Contact
 
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/bxdoan)

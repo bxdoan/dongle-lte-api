@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Example code on how to change info wifi the modem:
-python3 info.py
+Example code on how to change password wifi the modem:
+python3 change_wifi_password.py
 """
 from argparse import ArgumentParser
 from dongle_tle_api.client import Client
