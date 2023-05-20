@@ -14,10 +14,10 @@ pip install git+https://github.com/bxdoan/dongle-lte-api.git
 ## Usage
 
 ```python3
-from dongle_tle_api.client import Client
+from dongle_tle_api import Dongle
 from dongle_tle_api.enums import FieldsQuery
 
-client = Client()
+client = Dongle()
 info = client.get_data()
 print(info)
 device_list = client.get_data(fields=FieldsQuery.DeviceList)
@@ -55,24 +55,21 @@ Result dict
 
 Reboot network
 ```python3
-from dongle_tle_api.client import Client
+from dongle_tle_api import Dongle
 
-client = Client()
-info = client.reboot()
+Dongle().reboot()
 ```
 
 Change SSID
 ```python3
-from dongle_tle_api.client import Client
-client = Client()
-client.change_ssid(ssid="Don123")
+from dongle_tle_api import Dongle
+Dongle().change_ssid(ssid="Don123")
 ```
 
 Change password
 ```python3
-from dongle_tle_api.client import Client
-client = Client()
-client.change_password(password="12344321")
+from dongle_tle_api import Dongle
+Dongle().change_password(password="12344321")
 ```
 
 NOTE : change password/change ssid/reboot action will automate restart the modems

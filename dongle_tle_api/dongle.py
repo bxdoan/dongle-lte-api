@@ -6,7 +6,7 @@ from dongle_tle_api.enums import FidType, FIELDS_QUERY, FieldsQuery
 from dongle_tle_api.session import Session
 
 
-class Client(object):
+class Dongle(object):
     def __init__(self, url=None, username=None, password=None, **kwargs):
 
         self.session = Session(url=url, username=username, password=password)

@@ -4,7 +4,7 @@ Example code on how to change password wifi the modem:
 python3 change_wifi_password.py
 """
 from argparse import ArgumentParser
-from dongle_tle_api.client import Client
+from dongle_tle_api import Dongle
 
 
 if __name__ == '__main__':
@@ -14,5 +14,4 @@ if __name__ == '__main__':
     parser.add_argument('--password', type=str)
     args = parser.parse_args()
 
-    client = Client(args.url, args.username, args.password)
-    client.change_password(password="12344321")
+    Dongle(args.url, args.username, args.password).change_password(password="12344321")
