@@ -29,6 +29,13 @@ Result dict
 {'deviceList': [{'deviceIp': '192.168.100.248', 'deviceName': 'Buis-MBP', 'deviceType': 'WIFI', 'deviceAddress': 'f8:4d:89:98:07:76', 'deviceState': 1}]}
 ```
 
+Reboot network
+```python3
+from dongle_tle_api.client import Client
+
+client = Client()
+info = client.reboot()
+```
 
 ## Contact
 
