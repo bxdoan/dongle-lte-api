@@ -3,12 +3,16 @@
 API For Dongle LAN/WAN LTE USB Modems, you can use this to simply get information about your internet usage, signal, and tons of other stuff
 ## Tested on:
 * Dongle LTE WIFi Modems:
-    ![](./imgs/dongle-lte-usb.jpeg)
+    <div style="width: 60%; height: 60%">
+
+   ![](./imgs/dongle-lte-usb.jpeg)
+* 
+    </div> 
 
 
 ## Install
 ```shell
-pip install git+https://github.com/bxdoan/dongle-lte-api.git
+pip3 install git+https://github.com/bxdoan/dongle-lte-api.git
 ```
 
 ## Usage

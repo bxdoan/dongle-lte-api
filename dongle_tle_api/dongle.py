@@ -31,7 +31,7 @@ class Dongle(object):
             "fid": FidType.Reboot,
             "sessionId": f"{self.session.sessionID}"
         }
-        res = self._post_data(params)
+        res = self._post(params)
         return res
 
     def change_ssid(self, ssid):
@@ -58,7 +58,7 @@ class Dongle(object):
            "fields": fields_params,
            "sessionId": f"{self.session.sessionID}"
         }
-        res = self._post_data(params)
+        res = self._post(params)
         return res
 
     def _post_data(self, params):
