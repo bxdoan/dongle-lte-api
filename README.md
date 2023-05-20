@@ -6,7 +6,6 @@ API For Dongle LAN/WAN LTE USB Modems, you can use this to simply get informatio
     <div style="width: 60%; height: 60%">
 
    ![](./imgs/dongle-lte-usb.jpeg)
-* 
     </div> 
 
 
