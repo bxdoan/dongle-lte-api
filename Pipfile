@@ -5,11 +5,6 @@ name = "pypi"
 
 [packages]
 requests = "*"
-python-dotenv = "*"
-python-json-config = "*"
-pytest = "*"
-xmltodict = "*"
-pycryptodomex = "*"
 macwifi = "*"
 
 [requires]

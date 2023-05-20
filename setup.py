@@ -13,8 +13,6 @@ setup(
     package_data={'dongle_lte_api': ['py.typed']},
     install_requires=[
         'requests',
-        'xmltodict',
-        'pycryptodomex'
     ],
     tests_require=[
         'tox'
