@@ -80,7 +80,16 @@ class FieldsQuery(BaseEnum):
     WifiInfo = 'wifi_info'
 
 
-DEFAULT_URL = "http://192.168.100.1/api/json"
+class APIVersions(BaseEnum):
+    V1 = "http://192.168.100.1/api/json"
+    V2 = "http://192.168.100.1/ajax"
+
+
+class DongleVersions(BaseEnum):
+    V1 = 'dongle_lte_api.v1.DongleV1'
+    V2 = 'dongle_lte_api.v1.DongleV2'
+
+
 DEFAULT_USERNAME = "admin"
 DEFAULT_PASSWORD = "admin"
 HEADERS = {

@@ -1,77 +1,57 @@
 import json
+from pydoc import locate
 import requests
 
 from dongle_tle_api import utils
-from dongle_tle_api.enums import FidType, FIELDS_QUERY, FieldsQuery
-from dongle_tle_api.session import Session
+from dongle_tle_api.enums import APIVersions, DongleVersions
 
 
-class Dongle(object):
+class BaseDongle(object):
     def __init__(self, url=None, username=None, password=None, **kwargs):
-
-        self.session = Session(url=url, username=username, password=password)
+        self.session = None
+        self.url = self._get_url(url)
+        self.username = username
+        self.password = password
         self.headers = {
             "Content-Type": "application/json;charset=UTF-8",
-            "Authorization": f"{self.session.sessionID}",
         }
 
-    def get_data(self, fields = None) -> dict:
-        if fields is None:
-            fields = FieldsQuery.Data
-        params = {
-            "fid": FidType.Query,
-            "fields": FIELDS_QUERY.get(fields),
-            "sessionId": f"{self.session.sessionID}"
-        }
-        res = self._post_data(params)
-        return res['fields']
+    def _get_url(self, url=None):
+        if url:
+            return url
 
-    def reboot(self):
-        params = {
-            "fid": FidType.Reboot,
-            "sessionId": f"{self.session.sessionID}"
-        }
-        res = self._post(params)
-        return res
-
-    def change_ssid(self, ssid):
-        if not utils.validate_ssid(ssid):
-            raise Exception("SSID invalid")
-        fields_params = self.get_data(fields=FieldsQuery.WifiInfo)
-        fields_params.update({
-            "ssidName": ssid,
-        })
-        self._change_wifi_settings(fields_params)
-
-    def change_password(self, password):
-        if not utils.validate_password(password):
-            raise Exception("Password is valid for WiFi network!")
-        fields_params = self.get_data(fields=FieldsQuery.WifiInfo)
-        fields_params.update({
-            "ssidPassword": password,
-        })
-        self._change_wifi_settings(fields_params)
-
-    def _change_wifi_settings(self, fields_params):
-        params = {
-           "fid": FidType.SetWifi,
-           "fields": fields_params,
-           "sessionId": f"{self.session.sessionID}"
-        }
-        res = self._post(params)
-        return res
-
-    def _post_data(self, params):
-        try:
-            res = self._post(params)
+        for v in APIVersions.all():
+            res = requests.post(v, data=json.dumps({}))
             if res.status_code == 200:
-                res_json = res.json()
-                return res_json
-            else:
-                raise Exception("Connect failed!!!")
-        except Exception as e:
-            raise Exception("Connect failed!!!")
+                return v
+        return None
 
-    def _post(self, params):
-        res = requests.post(self.session.url, data=json.dumps(params), headers=self.headers)
-        return res
+
+class Dongle(BaseDongle):
+    def __init__(self, url=None, username=None, password=None, **kwargs):
+        super().__init__(url=url, username=username, password=password, **kwargs)
+        self.instance = self._get_instance()
+
+    def _get_instance(self):
+        key = utils.get_key_obj(self.url, APIVersions)
+        class_path = getattr(DongleVersions, key)
+        processor_class = locate(class_path)
+        define_value = {
+            'url': self.url,
+            'username': self.username,
+            'password': self.password,
+        }
+        instance = processor_class(**define_value)
+        return instance
+
+    def get_data(self, **kwargs) -> dict:
+        return self.instance.get_data(**kwargs)
+
+    def change_ssid(self, **kwargs) -> dict:
+        return self.instance.change_ssid(**kwargs)
+
+    def change_password(self, **kwargs) -> dict:
+        return self.instance.change_password(**kwargs)
+
+    def reboot(self, **kwargs) -> dict:
+        return self.instance.reboot(**kwargs)

@@ -1,4 +1,7 @@
+import io
 import re
+import string
+from random import choice, randint
 
 
 def validate_ssid(ssid : str):
@@ -23,3 +26,10 @@ def validate_password(pw :str):
     if not any(char.isdigit() for char in pw):
         return False
     return True
+
+
+def get_key_obj(val, obj):
+    for member in obj:
+        if member.value == val:
+            return member.name
+    return None
