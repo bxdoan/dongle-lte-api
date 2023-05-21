@@ -15,14 +15,10 @@ pip3 install git+https://github.com/bxdoan/dongle-lte-api.git
 ## Usage
 
 ```python3
-from dongle_tle_api import Dongle
-from dongle_tle_api.enums import FieldsQuery
+from dongle_lte_api import Dongle
 
-d = Dongle()
-info = d.get_data()
+info = Dongle().get_data()
 print(info)
-device_list = d.get_data(fields=FieldsQuery.DeviceList)
-print(device_list)
 ```
 Result dict
 ```python
@@ -55,21 +51,26 @@ Result dict
 ```
 
 Reboot network
+
 ```python3
-from dongle_tle_api import Dongle
+from dongle_lte_api import Dongle
 
 Dongle().reboot()
 ```
 
 Change SSID
+
 ```python3
-from dongle_tle_api import Dongle
+from dongle_lte_api import Dongle
+
 Dongle().change_ssid(ssid="Don123")
 ```
 
 Change password
+
 ```python3
-from dongle_tle_api import Dongle
+from dongle_lte_api import Dongle
+
 Dongle().change_password(password="12344321")
 ```
 

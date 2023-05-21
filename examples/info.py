@@ -4,8 +4,8 @@ Example code on how to get info the modem:
 python3 info.py
 """
 from argparse import ArgumentParser
-from dongle_tle_api import Dongle
-from dongle_tle_api.enums import FieldsQuery
+from dongle_lte_api import Dongle
+from dongle_lte_api.enums import FieldsQuery
 
 
 if __name__ == '__main__':

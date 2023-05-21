@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Example code on how to change info wifi the modem:
+Example code on how to change ssid wifi the modem:
 python3 change_wifi_info.py
 """
 from argparse import ArgumentParser
-from dongle_tle_api import Dongle
+from dongle_lte_api import Dongle
 
 
 if __name__ == '__main__':

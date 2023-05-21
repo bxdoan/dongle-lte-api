@@ -87,7 +87,7 @@ class APIVersions(BaseEnum):
 
 class DongleVersions(BaseEnum):
     V1 = 'dongle_lte_api.v1.DongleV1'
-    V2 = 'dongle_lte_api.v1.DongleV2'
+    V2 = 'dongle_lte_api.v2.DongleV2'
 
 
 DEFAULT_USERNAME = "admin"

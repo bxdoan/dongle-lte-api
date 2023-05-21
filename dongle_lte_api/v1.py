@@ -1,8 +1,8 @@
 import json
 import requests
 
-from dongle_tle_api.enums import FidType, DEFAULT_USERNAME, DEFAULT_PASSWORD, HEADERS, FieldsQuery, FIELDS_QUERY
-from dongle_tle_api import utils
+from dongle_lte_api.enums import FidType, DEFAULT_USERNAME, DEFAULT_PASSWORD, HEADERS, FieldsQuery, FIELDS_QUERY
+from dongle_lte_api import utils
 
 
 class Session(object):

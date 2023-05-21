@@ -2,8 +2,8 @@ import json
 from pydoc import locate
 import requests
 
-from dongle_tle_api import utils
-from dongle_tle_api.enums import APIVersions, DongleVersions
+from dongle_lte_api import utils
+from dongle_lte_api.enums import APIVersions, DongleVersions
 
 
 class BaseDongle(object):

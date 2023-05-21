@@ -1,8 +1,8 @@
 import json
 import requests
 
-from dongle_tle_api import utils
-from dongle_tle_api.enums import FidType, FieldsQuery, DEFAULT_PASSWORD, DEFAULT_USERNAME
+from dongle_lte_api import utils
+from dongle_lte_api.enums import FidType, FieldsQuery, DEFAULT_PASSWORD, DEFAULT_USERNAME
 
 
 class DongleV2(object):
@@ -48,11 +48,11 @@ class DongleV2(object):
     def change_ssid(self, ssid):
         if not utils.validate_ssid(ssid):
             raise Exception("SSID invalid")
-        fields_params = self.get_data(fields=FieldsQuery.WifiInfo)
-        fields_params.update({
+        params = {
+            "funcNo": "1007",
             "ssidName": ssid,
-        })
-        self._change_wifi_settings(fields_params=fields_params)
+        }
+        self._post(params=params)
 
     def change_password(self, password : str = '') -> None:
         if not utils.validate_password(password):

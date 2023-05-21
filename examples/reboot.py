@@ -4,7 +4,7 @@ Example code on how to reboot the modem:
 python3 re.py
 """
 from argparse import ArgumentParser
-from dongle_tle_api import Dongle
+from dongle_lte_api import Dongle
 
 
 if __name__ == '__main__':
