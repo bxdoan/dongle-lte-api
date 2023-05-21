@@ -17,14 +17,16 @@ pip3 install git+https://github.com/bxdoan/dongle-lte-api.git
 ## Usage
 <details>
   <summary>📚 Click to see some basic examples</summary>
+
 ```python3
 from dongle_lte_api import Dongle
 
 info = Dongle().get_data()
 print(info)
 ```
+
 Result dict
-```python
+```python3
 {
    "ssidName":"DonHandsome",
    "signalStrength":-74,
