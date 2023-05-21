@@ -2,7 +2,7 @@ import json
 import requests
 
 from dongle_lte_api import utils
-from dongle_lte_api.enums import FidType, FieldsQuery, DEFAULT_PASSWORD, DEFAULT_USERNAME
+from dongle_lte_api.enums import DEFAULT_PASSWORD, DEFAULT_USERNAME
 
 
 class DongleV2(object):
