@@ -8,7 +8,7 @@ def read_readme() -> str:
 
 setup(
     name='dongle-lte-api',
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(exclude=['tests', 'tests.*']),
     package_data={'dongle_lte_api': ['py.typed']},
     install_requires=[
