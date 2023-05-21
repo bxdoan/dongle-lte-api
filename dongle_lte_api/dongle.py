@@ -3,7 +3,10 @@ from pydoc import locate
 import requests
 
 from dongle_lte_api import utils
+from dongle_lte_api.config import get_logger
 from dongle_lte_api.enums import APIVersions, DongleVersions
+
+logger = get_logger(__name__)
 
 
 class BaseDongle(object):
@@ -18,13 +21,17 @@ class BaseDongle(object):
 
     def _get_url(self, url=None):
         if url:
+            res = requests.post(url, data=json.dumps({}))
+            if res.status_code != 200:
+                raise Exception("Dongle version is not support!!!")
             return url
+        else:
+            for v in APIVersions.all():
+                res = requests.post(v, data=json.dumps({}))
+                if res.status_code == 200:
+                    return v
 
-        for v in APIVersions.all():
-            res = requests.post(v, data=json.dumps({}))
-            if res.status_code == 200:
-                return v
-        return None
+            raise Exception("Dongle version is not support!!!")
 
 
 class Dongle(BaseDongle):
@@ -55,3 +62,6 @@ class Dongle(BaseDongle):
 
     def reboot(self, **kwargs) -> dict:
         return self.instance.reboot(**kwargs)
+
+    def ip(self):
+        utils.ip()

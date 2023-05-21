@@ -1,7 +1,9 @@
-import io
 import re
-import string
-from random import choice, randint
+import requests
+
+from dongle_lte_api.config import get_logger
+
+logger = get_logger(__name__)
 
 
 def validate_ssid(ssid : str):
@@ -33,3 +35,9 @@ def get_key_obj(val, obj):
         if member.value == val:
             return member.name
     return None
+
+
+def ip():
+    ip = requests.get('https://checkip.amazonaws.com').text.strip()
+
+    return ip

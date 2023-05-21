@@ -45,12 +45,13 @@ class DongleV2(object):
         res = self._post_data({"funcNo": "1013"})
         return res
 
-    def change_ssid(self, ssid):
+    def change_ssid(self, ssid, max_connect=10):
         if not utils.validate_ssid(ssid):
             raise Exception("SSID invalid")
         params = {
             "funcNo": "1007",
-            "ssidName": ssid,
+            "ssid"  : ssid,
+            "maxSta": str(max_connect)
         }
         self._post(params=params)
 
