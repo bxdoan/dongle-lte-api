@@ -42,8 +42,10 @@ class DongleV2(object):
         return data
 
     def reboot(self):
-        res = self._post_data({"funcNo": "1013"})
-        return res
+        try:
+            self._post(params={"funcNo": "1013"}, timeout=1)
+        except requests.exceptions.ReadTimeout:
+            pass
 
     def change_ssid(self, ssid, max_connect=10):
         if not utils.validate_ssid(ssid):
@@ -77,6 +79,6 @@ class DongleV2(object):
         except Exception as e:
             raise Exception("Connect failed!!!")
 
-    def _post(self, params):
-        res = requests.post(self.url, data=json.dumps(params), headers=self.headers, cookies=self.cookies)
+    def _post(self, params=None, **kwargs):
+        res = requests.post(self.url, data=json.dumps(params), headers=self.headers, cookies=self.cookies, **kwargs)
         return res
