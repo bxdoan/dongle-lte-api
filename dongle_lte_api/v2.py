@@ -60,8 +60,8 @@ class DongleV2(object):
         if not utils.validate_password(password):
             raise Exception("Password is valid for WiFi network!")
         params = {
-            "funcNo": "1010",
-            "pwd"  : password,
+            "funcNo"     : "1010",
+            "pwd"        : password,
             "encryp_type": str(encrypt_type)
         }
         self._post(params=params)
