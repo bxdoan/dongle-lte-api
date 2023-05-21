@@ -1,3 +1,4 @@
+import re
 from setuptools import setup, find_packages
 
 
@@ -6,9 +7,19 @@ def read_readme() -> str:
         return f.read()
 
 
+def get_version():
+    filename = "dongle_lte_api/__init__.py"
+    with open(filename) as f:
+        match = re.search(r"""^__version__ = ['"]([^'"]*)['"]""", f.read(), re.M)
+    if not match:
+        raise RuntimeError("{} doesn't contain __version__".format(filename))
+    version = match.groups()[0]
+    return version
+
+
 setup(
     name='dongle-lte-api',
-    version='0.0.2',
+    version=get_version(),
     packages=find_packages(exclude=['tests', 'tests.*']),
     package_data={'dongle_lte_api': ['py.typed']},
     install_requires=[
