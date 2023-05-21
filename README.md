@@ -15,7 +15,8 @@ pip3 install git+https://github.com/bxdoan/dongle-lte-api.git
 ```
 
 ## Usage
-
+<details>
+  <summary>📚 Click to see some basic examples</summary>
 ```python3
 from dongle_lte_api import Dongle
 
@@ -38,17 +39,6 @@ Result dict
    "imsi":"452021123670828",
    "iccId":"89840200011236708283",
    "hardwareVersion":"HW1.3"
-}
-{
-   "deviceList":[
-      {
-         "deviceIp":"192.168.100.248",
-         "deviceName":"Buis-MBP",
-         "deviceType":"WIFI",
-         "deviceAddress":"f8:4d:89:98:07:76",
-         "deviceState":1
-      }
-   ]
 }
 ```
 
@@ -77,6 +67,8 @@ Dongle().change_password(password="12344321")
 ```
 
 NOTE : change password/change ssid/reboot action will automate restart the modems
+</details>
+
 ## Contact
 
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/bxdoan)
