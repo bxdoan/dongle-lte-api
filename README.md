@@ -2,8 +2,10 @@
 
 API For Dongle LAN/WAN LTE USB Modems, you can use this to simply get information about your internet usage, signal, and tons of other stuff
 ## Tested on:
-* Dongle LTE WIFi Modems:
+* [4GDONG001](https://vi.aliexpress.com/item/1005004866748209.html?spm=a2g0o.productlist.main.11.10422d56VuClBS&algo_pvid=33188637-bff3-45b6-a248-57357591a4d9&algo_exp_id=33188637-bff3-45b6-a248-57357591a4d9-6&pdp_npi=3%40dis%21VND%211642643.0%211642643.0%21%21%21%21%21%40212279a216846025974963651d07dc%2112000030808142367%21sea%21VN%210&curPageLogUid=BmSEcUVU6U0L) 4G LTE UBS Dongle Wireless WIFI Modem Stick:
 <img src="https://github.com/bxdoan/dongle-lte-api/blob/master/imgs/dongle-lte-usb.jpeg" width=40% height=40%>
+* Dongle 4G LTE USB Modem Stick
+<img src="https://github.com/bxdoan/dongle-lte-api/blob/master/imgs/dongle_stick.jpeg" width=40% height=40%>
 
 ## Install
 ```shell
@@ -16,10 +18,10 @@ pip3 install git+https://github.com/bxdoan/dongle-lte-api.git
 from dongle_tle_api import Dongle
 from dongle_tle_api.enums import FieldsQuery
 
-client = Dongle()
-info = client.get_data()
+d = Dongle()
+info = d.get_data()
 print(info)
-device_list = client.get_data(fields=FieldsQuery.DeviceList)
+device_list = d.get_data(fields=FieldsQuery.DeviceList)
 print(device_list)
 ```
 Result dict
