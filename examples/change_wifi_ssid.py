@@ -14,4 +14,4 @@ if __name__ == '__main__':
     parser.add_argument('--password', type=str)
     args = parser.parse_args()
 
-    Dongle(args.url, args.username, args.password).change_ssid(ssid="NewSSID")
+    Dongle(args.url, args.username, args.password).change_ssid(ssid="DonTalent")

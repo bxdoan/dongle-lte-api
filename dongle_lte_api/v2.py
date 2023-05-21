@@ -54,23 +54,17 @@ class DongleV2(object):
             "maxSta": str(max_connect)
         }
         self._post(params=params)
+        self.reboot()
 
-    def change_password(self, password : str = '') -> None:
+    def change_password(self, password : str = '', encrypt_type : str = '4') -> None:
         if not utils.validate_password(password):
             raise Exception("Password is valid for WiFi network!")
-        fields_params = self.get_data(fields=FieldsQuery.WifiInfo)
-        fields_params.update({
-            "ssidPassword": password,
-        })
-        self._change_wifi_settings(fields_params=fields_params)
-
-    def _change_wifi_settings(self, fields_params=None):
         params = {
-            "fid": FidType.SetWifi,
-            "fields": fields_params,
+            "funcNo": "1010",
+            "pwd"  : password,
+            "encryp_type": str(encrypt_type)
         }
-        res = self._post(params)
-        return res
+        self._post(params=params)
 
     def _post_data(self, params):
         try:

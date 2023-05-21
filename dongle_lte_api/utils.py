@@ -21,9 +21,9 @@ def validate_ssid(ssid : str):
 def validate_password(pw :str):
     if not re.match(r'^[^\s]{8,63}$', pw):
         return False
-    if not any(char.islower() for char in pw):
+    elif len(pw) > 32:
         return False
-    if not any(char.isupper() for char in pw):
+    elif len(pw) < 8:
         return False
     if not any(char.isdigit() for char in pw):
         return False
