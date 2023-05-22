@@ -42,10 +42,12 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)',
         'Operating System :: OS Independent',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Software Development',
     ],
-    python_requires='>=3.10',
+    python_requires='>=3.9',
     project_urls={
         'Release notes': 'https://github.com/bxdoan/dongle-lte-api/releases',
     },
