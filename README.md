@@ -22,10 +22,12 @@ pip3 install git+https://github.com/bxdoan/dongle-lte-api.git
 from dongle_lte_api import Dongle
 
 info = Dongle().get_data()
+
 print(info)
 ```
 
 Result dict
+
 ```python3
 {
    "ssidName":"DonHandsome",
